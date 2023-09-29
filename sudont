@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# SUDONT (9)
+#
+# NAME
+#  sudont
+#
+# SYNOPSIS
+#  sudont [command]
+#
+# DESCRIPTION
+#  sudont allows a permitted user to execute a command as the current user, as specified by the security policy.
+#
+#  It differs from its counterpart sudo as that allows you to run commands as a different user.
+#
+#  Advantages:
+#
+#    - sudont is simpler and is entirely free of bugs
+#    - sudont prevents you from accidentally causing harm to your system, whereas sudo can enable this.
+#    - sudont is more performant
+#    - sudont is more secure as it never asks for your password
+#
+# CAVEATS
+#  Using sudo with sudont
+#
+#  This is not advised as you'll lose the safety sudont provides, but you will
+#  ensure that the sudo command is executed as the current user.
+#
+#   Example:
+#
+#     sudont sudo rm -rf /
+#
+#   is unsafe.
+#
+#  Stacking / Negation
+#
+#  sudont does not currently support stacking of negations, for example:
+#
+#   sudont sudont rm -rf /
+#
+#  Will still execute the command as the current user, rather than deferring to sudo.
+#
+# SEE ALSO
+#   sudo
+#
+# HISTORY
+#  See the HISTORY file in the sudont distribution for a brief history of sudont.
+#
+# AUTHORS
+#  Stephen Binns
+#
+# BUGS
+#  If you feel you have found a bug in sudont, you are mistaken.
+#
+# SUPPORT
+#  Limited free support is available, you should probably consider your life choises.
+#
+# DISCLAIMER
+#  sudont is provided “AS IS” and any express or implied warranties, including, but not limited to, the implied warranties of
+#  merchantability and fitness for a particular purpose are disclaimed.  See the LICENSE file distributed with sudont
+"$@"
